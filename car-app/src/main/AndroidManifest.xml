@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Android Automotive OS 전용 앱 -->
+    <uses-feature android:name="android.hardware.type.automotive" android:required="true" />
+    <uses-feature android:name="android.hardware.wifi" android:required="false" />
+    <uses-feature android:name="android.hardware.screen.portrait" android:required="false" />
+    <uses-feature android:name="android.hardware.screen.landscape" android:required="false" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+
+    <!-- 휴대폰 연동(하루 결과 요약 전송, 사용자가 동의한 경우만) -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 주행 중 화면 없이 신호만 기록하기 위한 포그라운드 서비스 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <application
+        android:name=".CarApp"
+        android:allowBackup="false"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.TodaysDrive">
+
+        <uses-library android:name="android.car" android:required="false" />
+
+        <!--
+            화면은 모두 주차 중에만 쓴다. distractionOptimized를 선언하지 않았기 때문에
+            주행 중에는 시스템이 화면을 가리고, 앱은 서비스에서 신호만 기록한다.
+        -->
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.ReportActivity" android:exported="false" />
+        <activity android:name=".ui.RouletteActivity" android:exported="false" />
+        <activity android:name=".ui.LinkActivity" android:exported="false" />
+
+        <service
+            android:name=".drive.DriveMonitorService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="주행 중 화면 없이 방향지시등·핸들·속도 신호를 기록해 주차 후 운전 습관 리포트를 만듭니다" />
+        </service>
+    </application>
+</manifest>

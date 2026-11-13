@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">오늘의 \'운\'전</string>
+    <string name="channel_drive">주행 기록</string>
+    <string name="notification_recording">주행 습관을 기록하고 있어요. 주차하면 리포트를 보여 드려요.</string>
+
+    <!-- 운세 카드 -->
+    <string name="label_mission">오늘의 행운 미션 · 달성하면 +5점</string>
+    <string name="label_tip">운전 꿀팁</string>
+    <string name="button_birth">띠 운세 설정</string>
+    <string name="birth_title">띠별 운세</string>
+    <string name="birth_message">생년월일을 넣으면 띠별 운세를 보여 드려요. 생년월일은 이 차 안에만 저장되고 어디에도 보내지 않아요.</string>
+    <string name="birth_enter">생년월일 입력</string>
+    <string name="birth_clear">입력 안 함(공통 운세)</string>
+
+    <!-- 오늘 현황 -->
+    <string name="status_parked">주차 중</string>
+    <string name="status_driving">주행 중</string>
+    <string name="today_empty">아직 오늘 주행 기록이 없어요</string>
+    <string name="button_report">주차 리포트</string>
+    <string name="button_roulette">룰렛 돌리기</string>
+    <string name="button_link">휴대폰 연결</string>
+    <string name="tickets_left">남은 티켓 %1$d장</string>
+    <string name="demo_title">시연 주행 (demo 빌드)</string>
+    <string name="button_demo">시연 주행 시작</string>
+
+    <!-- 주행 중 -->
+    <string name="driving_title">운전에 집중하세요</string>
+    <string name="driving_message">주차(P단)하면 오늘의 리포트를 보여 드려요</string>
+
+    <!-- 리포트 -->
+    <string name="label_good">잘한 점</string>
+    <string name="label_bad">아쉬운 점</string>
+    <string name="label_weight">주행 가중치 (기본 1.0, 0.5~1.5)</string>
+    <string name="button_close">닫기</string>
+    <string name="report_empty">아직 오늘 리포트가 없어요. 3km 이상 달리고 주차하면 점수가 나와요.</string>
+
+    <!-- 룰렛 -->
+    <string name="button_spin">돌리기 (티켓 1장)</string>
+    <string name="label_odds">당첨 확률</string>
+    <string name="roulette_note">시연용 상품입니다. 실제 상품은 제휴 후 지급하며, 그때부터 당첨 결정은 서버에서 합니다.</string>
+    <string name="roulette_no_ticket">남은 티켓이 없어요. 오늘의 점수 100점부터 티켓을 받아요.</string>
+    <string name="roulette_win">%1$s 당첨!</string>
+    <string name="roulette_lose">아쉽지만 다음 기회에</string>
+    <string name="roulette_driving">룰렛은 주차 중에만 돌릴 수 있어요</string>
+
+    <!-- 연결 -->
+    <string name="link_title">휴대폰과 연결하기</string>
+    <string name="link_info">차에서 바로 내리느라 놓친 운세·리포트·룰렛을 휴대폰 앱에서 이어서 볼 수 있어요.\n\n보내는 것: 하루 결과 요약(점수, 티켓 수, 잘한 점·아쉬운 점, 주행 거리·시간)\n보내지 않는 것: 위치, 주행 원본 기록, 생년월일, 이름·전화번호</string>
+    <string name="link_consent">하루 결과 요약을 휴대폰 앱으로 보내는 데 동의합니다</string>
+    <string name="button_make_code">연결 코드 만들기</string>
+    <string name="link_code_info">휴대폰 앱에서 이 6자리 코드를 입력하세요. 10분 동안 쓸 수 있어요.</string>
+    <string name="link_linked">연결됨 · 주차할 때마다 하루 결과 요약을 보내요</string>
+    <string name="link_not_linked">연결되지 않음 · 티켓은 이 차 안에서만 관리해요</string>
+    <string name="link_not_configured">연동 서버 주소가 설정되지 않은 빌드예요. local.properties에 firebase.dbUrl을 넣고 다시 빌드하세요.</string>
+    <string name="button_unlink">연결 끊기</string>
+    <string name="link_driving">휴대폰 연결은 주차 중에만 할 수 있어요</string>
+    <string name="link_need_consent">먼저 동의에 체크해 주세요</string>
+    <string name="error_prefix">오류: %1$s</string>
+</resources>

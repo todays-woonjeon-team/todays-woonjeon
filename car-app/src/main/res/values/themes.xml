@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.TodaysDrive" parent="@android:style/Theme.DeviceDefault.NoActionBar">
+        <item name="android:windowBackground">@color/bg</item>
+        <item name="android:colorAccent">@color/gold</item>
+        <item name="android:textColorPrimary">@color/text</item>
+        <item name="android:textColorSecondary">@color/text_muted</item>
+    </style>
+
+    <!-- 차량 화면은 멀리서도 읽히도록 글자를 크게 -->
+    <style name="Text.Body" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/text</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:lineSpacingMultiplier">1.15</item>
+    </style>
+
+    <style name="Text.Label" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/text_muted</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="Text.Title" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/gold</item>
+        <item name="android:textSize">34sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Button.Primary" parent="@android:style/Widget.DeviceDefault.Button">
+        <item name="android:background">@drawable/btn_primary</item>
+        <item name="android:textColor">@color/on_gold</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:minHeight">88dp</item>
+        <item name="android:paddingStart">32dp</item>
+        <item name="android:paddingEnd">32dp</item>
+    </style>
+
+    <style name="Button.Secondary" parent="@android:style/Widget.DeviceDefault.Button">
+        <item name="android:background">@drawable/btn_secondary</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:minHeight">80dp</item>
+        <item name="android:paddingStart">28dp</item>
+        <item name="android:paddingEnd">28dp</item>
+    </style>
+</resources>

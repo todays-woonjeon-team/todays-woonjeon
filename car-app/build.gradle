@@ -1,0 +1,63 @@
+plugins {
+    id 'com.android.application'
+}
+
+apply from: rootProject.file('gradle/android-common.gradle')
+
+android {
+    namespace 'com.todaysdrive.car'
+
+    defaultConfig {
+        applicationId 'com.todaysdrive.car'
+        minSdk 28            // Pleos Playground 배포 조건: API 28 이상
+        versionCode 1
+        versionName '0.1.0'
+    }
+
+    // demo: 기획서 이용 사례를 시나리오로 재생(에뮬레이터 조작 없이 바로 시연)
+    // vehicle: Vehicle SDK + CarPropertyManager로 실제 차량 신호 수신
+    flavorDimensions = ['signal']
+    productFlavors {
+        demo {
+            dimension 'signal'
+            buildConfigField 'boolean', 'DEMO', 'true'
+        }
+        vehicle {
+            dimension 'signal'
+            buildConfigField 'boolean', 'DEMO', 'false'
+        }
+    }
+
+    // AAOS Car API(CarPropertyManager, CarUxRestrictionsManager)
+    useLibrary 'android.car'
+}
+
+// 공모전 제출 규칙에 맞춘 APK 이름
+android.applicationVariants.configureEach { variant ->
+    variant.outputs.configureEach {
+        def cfg = rootProject.ext
+        if (variant.buildType.name == 'release' && variant.flavorName == cfg.submitFlavor) {
+            outputFileName = "${cfg.teamName}_${cfg.appFileName}_release.apk"
+        } else {
+            outputFileName = "${cfg.appFileName}_car_${variant.name}.apk"
+        }
+    }
+}
+
+// ./gradlew :car-app:copySubmissionApk → 저장소 apk/ 폴더에 제출용 APK 복사
+tasks.register('copySubmissionApk', Copy) {
+    def flavor = rootProject.ext.submitFlavor
+    dependsOn "assemble${flavor.capitalize()}Release"
+    from(layout.buildDirectory.dir("outputs/apk/${flavor}/release")) {
+        include '*.apk'
+    }
+    into rootProject.file('apk')
+}
+
+dependencies {
+    implementation project(':core')
+    implementation project(':shared-ui')
+
+    // Pleos Connect Vehicle SDK (vehicle 빌드에서만 사용)
+    vehicleImplementation 'ai.pleos.playground:Vehicle:2.3.2'
+}
