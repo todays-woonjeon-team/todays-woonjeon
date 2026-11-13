@@ -1,0 +1,6 @@
+# 이 파일을 local.properties로 복사해 값을 채웁니다(local.properties는 저장소에 올리지 않음).
+# Android Studio가 sdk.dir을 자동으로 넣어 줍니다.
+# sdk.dir=/Users/<사용자>/Library/Android/sdk
+
+# 휴대폰 연동용 Firebase Realtime Database 주소(선택)
+firebase.dbUrl=https://<프로젝트>-default-rtdb.asia-southeast1.firebasedatabase.app

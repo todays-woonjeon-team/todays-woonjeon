@@ -1,0 +1,24 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        // Pleos Connect SDK (Vehicle SDK 2.3.2)
+        maven { url 'https://nexus-playground.pleos.ai/repository/maven-releases/' }
+    }
+}
+
+rootProject.name = 'todays-woonjeon'
+
+include ':core'        // 공통 Java 모듈: 운세·판정·점수·티켓·연동 (안드로이드 없이 단위 테스트)
+include ':shared-ui'   // 차량·휴대폰 앱이 같이 쓰는 룰렛 화면
+include ':car-app'     // Pleos Connect 차량 앱
+include ':phone-app'   // 휴대폰 앱

@@ -1,0 +1,57 @@
+// 차량 앱·휴대폰 앱이 같이 쓰는 안드로이드 설정 (각 앱 build.gradle에서 apply from)
+
+def localProps = new Properties()
+def localFile = rootProject.file('local.properties')
+if (localFile.exists()) {
+    localFile.withInputStream { localProps.load(it) }
+}
+
+// 서명 정보는 저장소에 올리지 않는다(keystore.properties는 .gitignore에 있음)
+def keystoreProps = new Properties()
+def keystoreFile = rootProject.file('keystore.properties')
+def hasKeystore = keystoreFile.exists()
+if (hasKeystore) {
+    keystoreFile.withInputStream { keystoreProps.load(it) }
+}
+
+android {
+    compileSdk rootProject.ext.compileSdk
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    buildFeatures {
+        buildConfig true
+    }
+
+    defaultConfig {
+        targetSdk rootProject.ext.targetSdk
+        // 연동 서버 주소. local.properties에 firebase.dbUrl=https://... 로 넣는다(저장소에 올리지 않음)
+        buildConfigField 'String', 'FIREBASE_DB_URL', "\"${localProps.getProperty('firebase.dbUrl', '')}\""
+    }
+
+    signingConfigs {
+        release {
+            if (hasKeystore) {
+                storeFile rootProject.file(keystoreProps['storeFile'])
+                storePassword keystoreProps['storePassword']
+                keyAlias keystoreProps['keyAlias']
+                keyPassword keystoreProps['keyPassword']
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            // 키스토어가 없으면 디버그 키로 서명해서 에뮬레이터에 바로 설치할 수 있게 한다
+            signingConfig hasKeystore ? signingConfigs.release : signingConfigs.debug
+        }
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+}

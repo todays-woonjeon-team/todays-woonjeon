@@ -1,0 +1,15 @@
+plugins {
+    id 'com.android.application' version '8.8.2' apply false
+    id 'com.android.library' version '8.8.2' apply false
+}
+
+ext {
+    // 공모전 제출 APK 이름: 팀명_앱이름_release.apk
+    teamName = '마그마를누가마그나'   // 팀 이름(APK 파일 이름에 들어감)
+    appFileName = '오늘의운전'
+    // 1차 제출용 차량 APK를 만들 빌드(demo: 시나리오 재생, vehicle: 실제 차량 신호)
+    submitFlavor = 'demo'
+
+    compileSdk = 35
+    targetSdk = 35
+}

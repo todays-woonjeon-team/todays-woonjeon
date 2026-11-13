@@ -1,0 +1,41 @@
+plugins {
+    id 'com.android.application'
+}
+
+apply from: rootProject.file('gradle/android-common.gradle')
+
+android {
+    namespace 'com.todaysdrive.phone'
+
+    defaultConfig {
+        applicationId 'com.todaysdrive.phone'
+        minSdk 26
+        versionCode 1
+        versionName '0.1.0'
+    }
+}
+
+android.applicationVariants.configureEach { variant ->
+    variant.outputs.configureEach {
+        def cfg = rootProject.ext
+        outputFileName = variant.buildType.name == 'release'
+                ? "${cfg.teamName}_${cfg.appFileName}_phone_release.apk"
+                : "${cfg.appFileName}_phone_${variant.name}.apk"
+    }
+}
+
+// ./gradlew :phone-app:copySubmissionApk → 저장소 apk/ 폴더에 복사
+tasks.register('copySubmissionApk', Copy) {
+    dependsOn 'assembleRelease'
+    from(layout.buildDirectory.dir('outputs/apk/release')) {
+        include '*.apk'
+    }
+    into rootProject.file('apk')
+}
+
+dependencies {
+    implementation project(':core')
+    implementation project(':shared-ui')
+    // 출근 전 운세 알림, 새 리포트 확인(15분 간격)
+    implementation 'androidx.work:work-runtime:2.9.1'
+}

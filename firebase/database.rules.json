@@ -1,0 +1,31 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "codes": {
+      "$code": {
+        ".read": "$code.matches(/^[0-9]{6}$/)",
+        ".write": "$code.matches(/^[0-9]{6}$/)",
+        ".validate": "!newData.exists() || (newData.child('pairId').isString() && newData.child('pairId').val().matches(/^[0-9a-f]{32}$/) && newData.child('expiresAt').isNumber())"
+      }
+    },
+    "pairs": {
+      "$pairId": {
+        ".read": "$pairId.matches(/^[0-9a-f]{32}$/)",
+        ".write": "$pairId.matches(/^[0-9a-f]{32}$/)",
+        "days": {
+          "$date": {
+            ".validate": "$date.matches(/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/) && newData.hasChildren(['date', 'score', 'scoreTickets'])"
+          }
+        },
+        "tickets": {
+          "grants": {
+            "$date": {
+              ".validate": "$date.matches(/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/) && newData.isNumber() && newData.val() >= 0 && newData.val() <= 3"
+            }
+          }
+        }
+      }
+    }
+  }
+}

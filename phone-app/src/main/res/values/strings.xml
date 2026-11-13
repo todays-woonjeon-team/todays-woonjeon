@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">오늘의 \'운\'전</string>
+    <string name="channel_fortune">오늘의 운세 알림</string>
+    <string name="channel_report">주차 리포트 알림</string>
+    <string name="notify_report_title">오늘의 주차 리포트가 도착했어요</string>
+
+    <string name="label_mission">오늘의 행운 미션 · 달성하면 +5점</string>
+    <string name="label_tip">운전 꿀팁</string>
+    <string name="label_latest">최근 주차 리포트</string>
+    <string name="latest_empty">아직 받은 리포트가 없어요</string>
+    <string name="not_paired">차와 연결하면 주차 리포트와 티켓을 여기서도 볼 수 있어요</string>
+    <string name="button_pair">차와 연결하기</string>
+    <string name="button_report">리포트 보기</string>
+    <string name="button_roulette">룰렛 돌리기</string>
+    <string name="button_weekly">주간 기록</string>
+    <string name="button_settings">설정</string>
+    <string name="tickets_left">남은 티켓 %1$d장</string>
+    <string name="sync_failed">서버에 연결하지 못해 저장된 기록을 보여 드려요</string>
+
+    <!-- 연결 -->
+    <string name="pair_title">차와 연결하기</string>
+    <string name="pair_info">주차 중인 차량 화면에서 [휴대폰 연결] → [연결 코드 만들기]를 누르고, 화면에 뜬 6자리 숫자를 입력하세요.\n\n이름이나 전화번호 없이 연결돼요. 받는 정보는 하루 결과 요약(점수, 티켓 수, 잘한 점·아쉬운 점, 주행 거리·시간)뿐이고, 위치와 주행 원본 기록은 받지 않아요.</string>
+    <string name="pair_hint">연결 코드 6자리</string>
+    <string name="pair_consent">하루 결과 요약을 받아 보는 데 동의합니다</string>
+    <string name="button_connect">연결</string>
+    <string name="pair_wrong">코드가 맞지 않거나 시간이 지났어요. 차량 화면에서 새 코드를 만들어 주세요.</string>
+    <string name="pair_done">연결됐어요</string>
+    <string name="pair_need_consent">먼저 동의에 체크해 주세요</string>
+    <string name="not_configured">연동 서버 주소 없이 빌드된 앱이에요. local.properties에 firebase.dbUrl을 넣고 다시 빌드하세요.</string>
+
+    <!-- 리포트 -->
+    <string name="label_good">잘한 점</string>
+    <string name="label_bad">아쉬운 점</string>
+    <string name="label_weight">주행 가중치 (기본 1.0, 0.5~1.5)</string>
+    <string name="report_none">이 날의 리포트가 없어요</string>
+
+    <!-- 룰렛 -->
+    <string name="button_spin">돌리기 (티켓 1장)</string>
+    <string name="label_odds">당첨 확률</string>
+    <string name="roulette_note">시연용 상품입니다. 실제 상품은 제휴 후 지급하며, 그때부터 당첨 결정은 서버에서 합니다.</string>
+    <string name="roulette_no_ticket">남은 티켓이 없어요. 오늘의 점수 100점부터 티켓을 받아요.</string>
+    <string name="roulette_win">%1$s 당첨!</string>
+    <string name="roulette_lose">아쉽지만 다음 기회에</string>
+    <string name="roulette_need_pair">룰렛은 차와 연결한 뒤에 돌릴 수 있어요(티켓은 서버 한 곳에서 관리)</string>
+
+    <!-- 주간 -->
+    <string name="weekly_title">주간 기록</string>
+    <string name="weekly_empty">이번 주 기록이 아직 없어요</string>
+
+    <!-- 설정 -->
+    <string name="settings_title">설정</string>
+    <string name="settings_birth">띠별 운세 (생년월일)</string>
+    <string name="settings_birth_info">차량 앱과 같은 생년월일을 넣으면 같은 운세가 나와요. 생년월일은 이 휴대폰에만 저장돼요.</string>
+    <string name="settings_birth_none">입력 안 함 · 공통 운세</string>
+    <string name="settings_birth_clear">생년월일 지우기</string>
+    <string name="settings_reminder">출근 전 운세 알림</string>
+    <string name="settings_reminder_time">알림 시각 바꾸기</string>
+    <string name="settings_unpair">차와 연결 끊기</string>
+    <string name="error_prefix">오류: %1$s</string>
+</resources>
